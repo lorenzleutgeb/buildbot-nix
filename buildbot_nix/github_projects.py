@@ -109,6 +109,7 @@ class GithubBackend(GitBackend):
             # we use `virtual_builder_name` in the webinterface
             # so that we distinguish what has beeing build
             context=Interpolate("buildbot/%(prop:status_name)s"),
+            verbose=True,
         )
 
     def create_change_hook(self) -> dict[str, Any]:
