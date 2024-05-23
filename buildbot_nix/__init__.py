@@ -602,6 +602,15 @@ def config_for_project(
                 ),
                 builderNames=[f"{project.name}/nix-eval"],
             ),
+            # build branch "buildbot"
+            schedulers.SingleBranchScheduler(
+                name=f"{project.project_id}-buildbot",
+                change_filter=util.ChangeFilter(
+                    repository=project.url,
+                    branch="buildbot",
+                ),
+                builderNames=[f"{project.name}/nix-eval"],
+            ),
             # this is triggered from `nix-eval`
             schedulers.Triggerable(
                 name=f"{project.project_id}-nix-build",
